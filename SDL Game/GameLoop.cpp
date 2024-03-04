@@ -62,7 +62,8 @@ void GameLoop::handleEvents()
 
 void GameLoop::update()
 {
-
+	cnt++;
+	cout << cnt << endl;
 }
 
 void GameLoop::render()
