@@ -33,6 +33,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer)
 		{
+			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 			cout << "Renderer Created!" << endl;
 
 		}
@@ -66,10 +67,15 @@ void GameLoop::update()
 
 void GameLoop::render()
 {
-
+	SDL_RenderClear(renderer);
+	//this is where we will add stuff to render
+	SDL_RenderPresent(renderer);
 }
 
 void GameLoop::clean()
 {
-
+	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(renderer);
+	SDL_Quit();
+	cout << "Game Cleaned!" << endl;
 }
