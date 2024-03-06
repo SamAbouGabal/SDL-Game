@@ -1,8 +1,8 @@
 #include "GameLoop.h"
 #include "TextureManager.h"
+#include "GameObject.h"
 
-SDL_Texture* playerTex;
-SDL_Rect srcR, destR;
+GameObject* player;
 
 GameLoop::GameLoop()
 {
@@ -48,7 +48,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 		isRunning = false;
 	}
 
-	playerTex = TextureManager::LoadTexture("assets/Player.png", renderer);
+	player = new GameObject("assets/Player.png", renderer);
 }
 void GameLoop::handleEvents()
 {
@@ -67,21 +67,14 @@ void GameLoop::handleEvents()
 
 void GameLoop::update()
 {
-	//Scale
-	destR.h = 64;
-	destR.w = 64;
-	destR.x = cnt;
-
-	//prints the counter for every frame (without the FPS limiting this goes flying)
-	cnt++;
-	cout << cnt << endl;
+	player->Update();
 	
 }
 
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+	player->Render();
 	SDL_RenderPresent(renderer);
 }
 
