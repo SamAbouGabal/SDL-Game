@@ -33,6 +33,12 @@ TileMap::TileMap()
 
 	LoadTileMap(lvlOne);
 
+	src.x = 0;
+	src.y = 0;
+	src.h = dest.h = 32;
+	src.w = dest.w = 32;
+
+	dest.x = dest.y = 0;
 }
 
 void TileMap::LoadTileMap(int arr[20][25])
@@ -48,5 +54,31 @@ void TileMap::LoadTileMap(int arr[20][25])
 
 void TileMap::DrawTileMap()
 {
+	int type = 0;
 
+	for (int row = 0; row < 20; row++)
+	{
+		for (int column = 0; column < 25; column++)
+		{
+			type = map[row][column];
+
+			dest.x = column * 32;
+			dest.y = row * 32;
+
+			switch (type)
+			{
+			case 0:
+				TextureManager::Draw(water, src, dest);
+				break;
+			case 1:
+				TextureManager::Draw(grass, src, dest);
+				break;
+			case 2:
+				TextureManager::Draw(dirt, src, dest);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 }
