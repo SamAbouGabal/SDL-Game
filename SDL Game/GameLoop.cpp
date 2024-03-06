@@ -73,6 +73,7 @@ void GameLoop::update()
 	destR.w = 64;
 	destR.x = cnt;
 
+	//prints the counter for every frame (without the FPS limiting this goes flying)
 	cnt++;
 	cout << cnt << endl;
 	
