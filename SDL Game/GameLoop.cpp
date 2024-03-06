@@ -48,7 +48,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 		isRunning = false;
 	}
 
-	player = new GameObject("assets/Player.png", renderer);
+	player = new GameObject("assets/Player.png", renderer, 0, 0);
 }
 void GameLoop::handleEvents()
 {
