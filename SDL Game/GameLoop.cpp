@@ -68,13 +68,14 @@ void GameLoop::handleEvents()
 
 void GameLoop::update()
 {
-	destR.h = 32;
-	destR.w = 32;
+	//Scale
+	destR.h = 64;
+	destR.w = 64;
+	destR.x = cnt;
 
-	/* Counter just to see if the game window was working
 	cnt++;
 	cout << cnt << endl;
-	*/
+	
 }
 
 void GameLoop::render()
