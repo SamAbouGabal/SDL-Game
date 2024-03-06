@@ -8,7 +8,7 @@ public:
 	TileMap();
 	~TileMap();
 
-	void LoadTileMap();
+	void LoadTileMap(int arr[20][25]);
 	void DrawTileMap();
 
 private:
