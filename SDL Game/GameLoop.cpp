@@ -3,6 +3,7 @@
 #include "GameObject.h"
 
 GameObject* player;
+GameObject* enemy;
 
 GameLoop::GameLoop()
 {
@@ -49,6 +50,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	}
 
 	player = new GameObject("assets/Player.png", renderer, 0, 0);
+	enemy = new GameObject("assets/Enemy.png", renderer, 50, 50);
 }
 void GameLoop::handleEvents()
 {
@@ -68,6 +70,7 @@ void GameLoop::handleEvents()
 void GameLoop::update()
 {
 	player->Update();
+	enemy->Update();
 	
 }
 
@@ -75,6 +78,7 @@ void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
 	player->Render();
+	enemy->Render();
 	SDL_RenderPresent(renderer);
 }
 
