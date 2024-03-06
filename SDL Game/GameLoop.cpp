@@ -1,6 +1,7 @@
 #include "GameLoop.h"
 
 SDL_Texture* playerTex;
+SDL_Rect srcR, destR;
 
 GameLoop::GameLoop()
 {
@@ -67,14 +68,19 @@ void GameLoop::handleEvents()
 
 void GameLoop::update()
 {
+	destR.h = 32;
+	destR.w = 32;
+
+	/* Counter just to see if the game window was working
 	cnt++;
 	cout << cnt << endl;
+	*/
 }
 
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, playerTex, NULL, NULL);
+	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
 	SDL_RenderPresent(renderer);
 }
 
