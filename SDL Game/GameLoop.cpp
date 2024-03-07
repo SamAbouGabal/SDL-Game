@@ -1,18 +1,15 @@
 #include "GameLoop.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "TileMap.h"
-#include "ECS.h"
 #include "Components.h"
 
-GameObject* player;
-GameObject* enemy;
+
 TileMap* tileMap;
 
 SDL_Renderer* GameLoop::renderer = nullptr;
 
 Manager manager;
-auto& newPlayer(manager.addEntity());
+auto& player(manager.addEntity());
 
 GameLoop::GameLoop()
 {
@@ -58,11 +55,12 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 		isRunning = false;
 	}
 
-	player = new GameObject("assets/Player.png", 0, 0);
-	enemy = new GameObject("assets/Enemy.png", 50, 50);
+
+	player.addComponent<PositionComponent>();
+	player.addComponent<SpriteComponent>("assets/Player.png");
 	tileMap = new TileMap();
-	newPlayer.addComponent<PositionComponent>();
-	newPlayer.getComponent<PositionComponent>().setPos(500, 500);
+	player.addComponent<PositionComponent>();
+	player.getComponent<PositionComponent>().setPos(500, 500);
 }
 
 void GameLoop::handleEvents()
@@ -82,11 +80,10 @@ void GameLoop::handleEvents()
 
 void GameLoop::update()
 {
-	player->Update();
-	enemy->Update();
+	manager.refresh();
 	manager.update();
-	cout << newPlayer.getComponent<PositionComponent>().x() << "," <<
-		newPlayer.getComponent<PositionComponent>().y() << endl;
+
+	
 	
 }
 
@@ -94,8 +91,6 @@ void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
 	tileMap->DrawTileMap();
-	player->Render();
-	enemy->Render();
 	SDL_RenderPresent(renderer);
 }
 
