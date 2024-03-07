@@ -47,5 +47,8 @@
     <ClInclude Include="ECS.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

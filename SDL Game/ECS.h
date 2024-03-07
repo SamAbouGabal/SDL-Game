@@ -85,3 +85,34 @@ public:
 		return *static_cast<T*> (ptr);
 	}
 };
+
+class Manager {
+private:
+	vector<unique_ptr<Entity>> entities;
+
+public:
+	void update() {
+		for (auto& e : entities) e->Update();
+	}
+	void draw() {
+		for (auto& e : entities) e->draw();
+	}
+
+	void refresh() {
+		entities.erase(remove_if(begin(entities), end(entities), [](const unique_ptr<Entity>& mEntity) {
+
+			return !mEntity->isActive();
+			}),
+			end(entities));
+	}
+
+	Entity& addEntity() {
+
+		Entity* e = new Entity();
+		unique_ptr<Entity> uPtr{ e };
+		entities.emplace_back(move(uPtr));
+		return *e;
+
+	}
+
+};
