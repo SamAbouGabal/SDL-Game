@@ -44,5 +44,8 @@
     <ClInclude Include="TileMap.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="ECS.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
