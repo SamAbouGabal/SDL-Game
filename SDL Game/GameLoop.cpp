@@ -1,9 +1,11 @@
 #include "GameLoop.h"
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "TileMap.h"
 
 GameObject* player;
 GameObject* enemy;
+TileMap* tileMap;
 
 SDL_Renderer* GameLoop::renderer = nullptr;
 
@@ -53,6 +55,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 
 	player = new GameObject("assets/Player.png", 0, 0);
 	enemy = new GameObject("assets/Enemy.png", 50, 50);
+	tileMap = new TileMap();
 }
 void GameLoop::handleEvents()
 {
@@ -79,6 +82,7 @@ void GameLoop::update()
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
+	tileMap->DrawTileMap();
 	player->Render();
 	enemy->Render();
 	SDL_RenderPresent(renderer);
