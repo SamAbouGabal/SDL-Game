@@ -3,6 +3,7 @@
 #include "TileMap.h"
 #include "Components.h"
 #include "Vector2D.h"
+#include "Collision.h"
 
 TileMap* tileMap;
 
@@ -12,6 +13,7 @@ SDL_Event GameLoop::event;
 
 Manager manager;
 auto& player(manager.addEntity());
+auto& wall(manager.addEntity());
 
 GameLoop::GameLoop()
 {
@@ -61,8 +63,13 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	player.addComponent<TransformComponent>();
 	player.addComponent<SpriteComponent>("assets/Player.png");
 	player.addComponent<KeyboardController>();
+	player.addComponent<ColliderComponent>("player");
+
+
 	tileMap = new TileMap();
-	
+	wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+	wall.addComponent<SpriteComponent>("assets/Dirt.png");
+	wall.addComponent<ColliderComponent>("wall");
 }
 
 void GameLoop::handleEvents()
