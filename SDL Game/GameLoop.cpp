@@ -7,6 +7,8 @@
 TileMap* tileMap;
 
 SDL_Renderer* GameLoop::renderer = nullptr;
+SDL_Event GameLoop::event;
+
 
 Manager manager;
 auto& player(manager.addEntity());
@@ -58,13 +60,13 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 
 	player.addComponent<TransformComponent>();
 	player.addComponent<SpriteComponent>("assets/Player.png");
+	player.addComponent<KeyboardController>();
 	tileMap = new TileMap();
 	
 }
 
 void GameLoop::handleEvents()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 	switch (event.type)
 	{
@@ -81,12 +83,6 @@ void GameLoop::update()
 {
 	manager.refresh();
 	manager.update();
-	player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
-
-	//test to see if the setTex Works
-	if (player.getComponent<TransformComponent>().position.x > 100) {
-		player.getComponent<SpriteComponent>().setTex("assets/Enemy.png");
-	}
 	
 	
 }
