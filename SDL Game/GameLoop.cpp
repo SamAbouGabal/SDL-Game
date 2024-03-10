@@ -60,7 +60,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	}
 
 
-	player.addComponent<TransformComponent>();
+	player.addComponent<TransformComponent>(2);
 	player.addComponent<SpriteComponent>("assets/Player.png");
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
@@ -91,6 +91,9 @@ void GameLoop::update()
 	manager.refresh();
 	manager.update();
 	
+	if (Collision::AABB(player.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider)) {
+		cout << "Wall Hit!" << endl;
+	}
 	
 }
 
