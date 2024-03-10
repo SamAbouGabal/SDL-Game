@@ -56,7 +56,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	}
 
 
-	player.addComponent<PositionComponent>(100, 500);
+	player.addComponent<PositionComponent>();
 	player.addComponent<SpriteComponent>("assets/Player.png");
 	tileMap = new TileMap();
 	
@@ -82,9 +82,12 @@ void GameLoop::update()
 	manager.refresh();
 	manager.update();
 
+
+	/* test to see if the setTex Works
 	if (player.getComponent<PositionComponent>().x() > 100) {
 		player.getComponent<SpriteComponent>().setTex("assets/Enemy.png");
 	}
+	*/
 	
 }
 
