@@ -56,11 +56,10 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	}
 
 
-	player.addComponent<PositionComponent>();
+	player.addComponent<PositionComponent>(100, 500);
 	player.addComponent<SpriteComponent>("assets/Player.png");
 	tileMap = new TileMap();
-	player.addComponent<PositionComponent>();
-	player.getComponent<PositionComponent>().setPos(500, 500);
+	
 }
 
 void GameLoop::handleEvents()

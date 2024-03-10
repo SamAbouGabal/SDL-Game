@@ -9,7 +9,6 @@ private:
 	int yPos;
 
 public:
-
 	PositionComponent() {
 		xPos = 0;
 		yPos = 0;
@@ -21,12 +20,10 @@ public:
 	}
 
 	int x() { return xPos; }
+	void x (int x) { xPos = x; }
 	int y() { return yPos; }
+	void y(int y) { yPos = y; }
 
-	void init() override {
-		xPos = 0;
-		yPos = 0;
-	}
 
 	void update() override {
 		xPos++;
