@@ -62,7 +62,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 		isRunning = false;
 	}
 
-
+	TileMap::LoadTileMap("assets/p16x16.map", 16, 16);
 
 	player.addComponent<TransformComponent>(2);
 	player.addComponent<SpriteComponent>("assets/Player.png");
