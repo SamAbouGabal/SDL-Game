@@ -27,6 +27,7 @@ public:
 			case SDLK_a:
 				transform->velocity.x = -1;
 				sprite->Play("Walk");
+				sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
 				break;
 			case SDLK_d:
 				transform->velocity.x = 1;
@@ -50,6 +51,8 @@ public:
 			case SDLK_a:
 				transform->velocity.x = 0;
 				sprite->Play("Idle");
+				sprite->spriteFlip = SDL_FLIP_NONE;
+
 				break;
 			case SDLK_d:
 				transform->velocity.x = 0;
