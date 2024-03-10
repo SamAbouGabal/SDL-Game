@@ -112,18 +112,17 @@ void GameLoop::update()
 	manager.refresh();
 	manager.update();
 	
-	if (Collision::AABB(player.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider)) {
-		player.getComponent<TransformComponent>().scale = 1;
-		player.getComponent<TransformComponent>().velocity * -1;
-		cout << "Wall Hit!" << endl;
+	for (auto cc : colliders) {
+		(Collision::AABB(player.getComponent<ColliderComponent>(), *cc));
 	}
+
 	
 }
 
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
-	tileMap->DrawTileMap();
+	//tileMap->DrawTileMap();
 	manager.draw();
 	SDL_RenderPresent(renderer);
 }
