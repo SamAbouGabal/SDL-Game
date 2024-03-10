@@ -2,6 +2,8 @@
 #include "Components.h"
 #include "SDL.h"
 #include "TextureManager.h"
+#include "Animation.h"
+#include <map>
 
 class SpriteComponent : public Component
 {
@@ -15,17 +17,28 @@ private:
 	int speed = 100;
 
 public:
+
+	int animIndex = 0;
+	map<const char*, Animation> animations;
+
 	SpriteComponent() = default;
 	SpriteComponent(const char* path)
 	{
 		setTex(path);
 	}
 
-	SpriteComponent(const char* path, int nFrames, int mSpeed)
+	SpriteComponent(const char* path, bool isAnimated)
 	{
-		animated = true;
-		frames = nFrames;
-		speed = mSpeed;
+		animated = isAnimated;
+
+		Animation idle = Animation(0, 3, 100);
+		Animation walk = Animation(1, 7, 100);
+
+		animations.emplace("Idle", idle);
+		animations.emplace("Walk", walk);
+
+		Play("Idle");
+		
 		setTex(path);
 	}
 
@@ -55,6 +68,8 @@ public:
 			srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
 		}
 
+		srcRect.y = animIndex * transform->height;
+
 		destRect.x = static_cast<int>(transform->position.x);
 		destRect.y = static_cast<int>(transform->position.y);
 		destRect.w = transform->width * transform->scale;
@@ -66,6 +81,14 @@ public:
 	void draw() override {
 
 		TextureManager::Draw(texture, srcRect, destRect);
+
+	}
+
+	void Play(const char* animName) {
+
+		frames = animations[animName].frames;
+		animIndex = animations[animName].index;
+		speed = animations[animName].speed;
 
 	}
 };
