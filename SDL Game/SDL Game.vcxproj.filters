@@ -59,5 +59,8 @@
     <ClInclude Include="TransformComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
