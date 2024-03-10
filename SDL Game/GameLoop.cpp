@@ -16,6 +16,11 @@ Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
+auto& tile0(manager.addEntity());
+auto& tile1(manager.addEntity());
+auto& tile2(manager.addEntity());
+
+
 GameLoop::GameLoop()
 {
 
@@ -61,6 +66,7 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	}
 
 
+
 	player.addComponent<TransformComponent>(2);
 	player.addComponent<SpriteComponent>("assets/Player.png");
 	player.addComponent<KeyboardController>();
@@ -71,6 +77,20 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
 	wall.addComponent<SpriteComponent>("assets/Dirt.png");
 	wall.addComponent<ColliderComponent>("wall");
+
+
+	tile0.addComponent<TileComponent>(200, 200, 32, 32, 0); // water
+
+	tile1.addComponent<TileComponent>(250, 250, 32, 32, 1); // dirt
+	tile1.addComponent<ColliderComponent>("dirt");
+
+
+	tile2.addComponent<TileComponent>(150, 150, 32, 32, 2); //grass
+	tile2.addComponent<ColliderComponent>("grass");
+
+
+
+
 }
 
 void GameLoop::handleEvents()
