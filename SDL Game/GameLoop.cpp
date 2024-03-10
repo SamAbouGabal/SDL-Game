@@ -91,6 +91,7 @@ void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
 	tileMap->DrawTileMap();
+	manager.draw();
 	SDL_RenderPresent(renderer);
 }
 

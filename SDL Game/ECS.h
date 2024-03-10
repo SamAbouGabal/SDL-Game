@@ -94,10 +94,10 @@ private:
 
 public:
 	void update() {
-		for (auto& e : entities) e->Update();
+		for (auto& c : entities) c->Update(); //e
 	}
 	void draw() {
-		for (auto& e : entities) e->draw();
+		for (auto& c : entities) c->draw(); //e
 	}
 
 	void refresh() {

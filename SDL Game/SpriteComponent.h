@@ -22,7 +22,7 @@ public:
 
 		srcRect.x = srcRect.y = 0;
 		srcRect.w = srcRect.h = 32;
-		destRect.w = destRect.h = 64;
+		destRect.w = destRect.h = 64; // Because we scaled our texture by 2..
 
 	}
 
