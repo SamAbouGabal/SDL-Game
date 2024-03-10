@@ -16,9 +16,6 @@ Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
 
 
 GameLoop::GameLoop()
@@ -79,15 +76,6 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	wall.addComponent<ColliderComponent>("wall");
 
 
-	tile0.addComponent<TileComponent>(200, 200, 32, 32, 0); // water
-
-	tile1.addComponent<TileComponent>(250, 250, 32, 32, 1); // dirt
-	tile1.addComponent<ColliderComponent>("dirt");
-
-
-	tile2.addComponent<TileComponent>(150, 150, 32, 32, 2); //grass
-	tile2.addComponent<ColliderComponent>("grass");
-
 
 
 
@@ -122,7 +110,6 @@ void GameLoop::update()
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
-	//tileMap->DrawTileMap();
 	manager.draw();
 	SDL_RenderPresent(renderer);
 }
@@ -133,4 +120,10 @@ void GameLoop::clean()
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
 	cout << "Game Cleaned!" << endl;
+}
+
+void GameLoop::AddTile(int id, int x, int y) {
+	auto& tile(manager.addEntity());
+	tile.addComponent<TileComponent>(x, y, 32, 32, id);
+
 }
