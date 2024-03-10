@@ -56,7 +56,7 @@
     <ClInclude Include="SpriteComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="PositionComponent.h">
+    <ClInclude Include="TransformComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>
