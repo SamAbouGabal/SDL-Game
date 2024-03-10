@@ -5,6 +5,8 @@
 #include "Vector2D.h"
 #include "Collision.h"
 
+using namespace std;
+
 TileMap* tileMap;
 
 SDL_Renderer* GameLoop::renderer = nullptr;
@@ -16,7 +18,13 @@ Manager manager;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
+enum groupLabels : size_t {
+	groupMap,
+	groupPlayers,
+	groupEnemies,
+	groupColliders
 
+};
 
 GameLoop::GameLoop()
 {
@@ -68,12 +76,13 @@ void GameLoop::init(const char* title, int xPos, int yPos, int width, int height
 	player.addComponent<SpriteComponent>("assets/Player.png");
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
-
+	player.addGroup(groupPlayers);
 
 	tileMap = new TileMap();
 	wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
 	wall.addComponent<SpriteComponent>("assets/Dirt.png");
 	wall.addComponent<ColliderComponent>("wall");
+	wall.addGroup(groupMap);
 
 
 
@@ -107,10 +116,25 @@ void GameLoop::update()
 	
 }
 
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
+
+
+
+
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
-	manager.draw();
+	for (auto& t : tiles) {
+		t->draw();
+	}
+	for (auto& p : players) {
+		p->draw();
+	}
+	for (auto& e : enemies) {
+		e->draw();
+	}
 	SDL_RenderPresent(renderer);
 }
 
@@ -125,5 +149,5 @@ void GameLoop::clean()
 void GameLoop::AddTile(int id, int x, int y) {
 	auto& tile(manager.addEntity());
 	tile.addComponent<TileComponent>(x, y, 32, 32, id);
-
+	tile.addGroup(groupMap);
 }
