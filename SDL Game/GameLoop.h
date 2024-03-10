@@ -2,9 +2,13 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
+#include <vector>
 
 
 using namespace std;
+
+class ColliderComponent;
+
 
 class GameLoop
 {
@@ -23,6 +27,7 @@ public:
 
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
+	static vector<ColliderComponent*> colliders;
 
 private:
 	int cnt = 0;

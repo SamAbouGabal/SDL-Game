@@ -10,6 +10,7 @@ TileMap* tileMap;
 SDL_Renderer* GameLoop::renderer = nullptr;
 SDL_Event GameLoop::event;
 
+vector<ColliderComponent*> GameLoop::colliders;
 
 Manager manager;
 auto& player(manager.addEntity());
