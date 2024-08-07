@@ -1,4 +1,4 @@
-# SDL Game (Still in development) 
+# Knights Quest! SDL Game (Still in development) 
 
 It's the start of a small top down RPG where you play as a knight traversing throught the world.
 Future additions are:
