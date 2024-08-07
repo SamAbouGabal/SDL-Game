@@ -2,6 +2,7 @@
 
 It's the start of a small top down RPG where you play as a knight traversing throught the world.
 Future additions are:
+
 -Implement the enemy and it's animations
   - That Enemy can inflict damage to the player
   - Add a boss
