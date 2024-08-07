@@ -21,6 +21,7 @@ Current version GamePlay:
 
 
 Currently used and added assets:
+All the sprites and animations are created by me in Pyxel Edit.
 
 ![Screenshot 2024-03-11 091153](https://github.com/SamAbouGabal/SDL-Game/assets/143541187/175fc1c8-860c-4767-8fa0-7335ed5ff8bc)
 ![Screenshot 2024-03-10 201827](https://github.com/SamAbouGabal/SDL-Game/assets/143541187/a7e1ba48-5bd6-422f-b23d-940af7f11576)
