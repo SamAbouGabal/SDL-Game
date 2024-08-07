@@ -3,16 +3,16 @@
 It's the start of a small top down RPG where you play as a knight traversing throught the world.
 Future additions are:
 
--Implement the enemy and it's animations
+Implement the enemy and it's animations
   - That Enemy can inflict damage to the player
   - Add a boss
--Other NPC's that the player can interact with
-    -Shop keeper
-    -Quest giver 
--Further extend the map (have an idea of creating a collider on the borders of the screen that loads in a new tile map)
-  -Add a minimap (maybe with a diablo esque feel to it)
--Add a loot pool
--Create more textures and sprites
+Other NPC's that the player can interact with
+    - Shop keeper
+    - Quest giver 
+Further extend the map (have an idea of creating a collider on the borders of the screen that loads in a new tile map)
+    - Add a minimap (maybe with a diablo esque feel to it)
+Add a loot pool
+Create more textures and sprites
 
 
 Current version GamePlay:
