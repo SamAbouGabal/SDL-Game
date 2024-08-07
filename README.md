@@ -15,10 +15,12 @@ Future adds are:
 
 
 Current version GamePlay:
+
 ![9b612b4c3ad7643ea7b952d298b62bf8](https://github.com/SamAbouGabal/SDL-Game/assets/143541187/38e73934-c7d9-44d5-8ad0-625dc1e80ef1)
 
 
 Currently used and added assets:
+
 ![Screenshot 2024-03-11 091153](https://github.com/SamAbouGabal/SDL-Game/assets/143541187/175fc1c8-860c-4767-8fa0-7335ed5ff8bc)
 ![Screenshot 2024-03-10 201827](https://github.com/SamAbouGabal/SDL-Game/assets/143541187/a7e1ba48-5bd6-422f-b23d-940af7f11576)
 ![Screenshot 2024-03-10 201701](https://github.com/SamAbouGabal/SDL-Game/assets/143541187/1d1e474b-2e1f-4a03-ade6-3de2eeabe41b)
